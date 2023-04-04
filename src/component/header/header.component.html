@@ -1,9 +1,26 @@
 
-<!-- <mat-toolbar>
-    <mat-icon class="material-icons-outlined">menu</mat-icon>
-</mat-toolbar> -->
-
-<mat-card class="header_style">
-    <mat-icon class="material-icons-outlined">menu</mat-icon>
+  <mat-card  class="header_style">
+    <button mat-icon-button (click)="sidenav.toggle()" (click)="valuChange()" class="icon_styles" >
+      <mat-icon class="icon_style" [style.display]="flag==false?'none':''">menu</mat-icon>
+      <mat-icon class="icon_style"  [style.display]="flag==false?'':'none'" >close</mat-icon>
+    </button>
+   <div class="child_style">
+    <button mat-button style="margin-left: 15%;position: absolute;" >Child2</button>
+    <button mat-button routerLink="/child1">Child1</button>
+   </div>
   </mat-card>
- 
+
+  <mat-sidenav-container hasBackdrop="false" >
+    <mat-sidenav #sidenav class="drawer_style" mode="over" >
+      <mat-nav-list class="list_item">
+        <a mat-list-item routerLink="/">Home</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/about">About</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/contact">Contact</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content_style">
+      <app-child1></app-child1>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
