@@ -10,6 +10,7 @@ import { FooterComponent } from 'src/component/footer/footer.component';
 import { HeaderComponent } from 'src/component/header/header.component';
 import { DrawerComponent } from 'src/component/drawer/drawer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { Child2Component } from 'src/component/main/child2/child2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     Child1Component,
     FooterComponent,
     HeaderComponent,
-    DrawerComponent
+    DrawerComponent,
+    Child2Component
   ],
   imports: [
     BrowserModule,
