@@ -1,0 +1,16 @@
+.footer {
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    transform: rotateY(180deg);
+    border-top: 1px solid black;
+    border-radius: 0px
+  }
+  
+  .footer .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }

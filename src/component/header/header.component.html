@@ -5,12 +5,15 @@
       <mat-icon class="icon_style"  [style.display]="flag==false?'':'none'" >close</mat-icon>
     </button>
    <div class="child_style">
-    <button mat-button style="margin-left: 15%;position: absolute;" >Child2</button>
+    <button mat-button routerLink="/child2" >Child2</button>
     <button mat-button routerLink="/child1">Child1</button>
+    <button mat-button routerLink="/child3">Child3</button>
+    <button mat-button routerLink="/child4">Child4</button>
+    <button mat-button routerLink="/child5">Child5</button>
    </div>
   </mat-card>
 
-  <mat-sidenav-container hasBackdrop="false" >
+  <mat-sidenav-container hasBackdrop="false">
     <mat-sidenav #sidenav class="drawer_style" mode="over" >
       <mat-nav-list class="list_item">
         <a mat-list-item routerLink="/">Home</a>
@@ -21,6 +24,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="content_style">
-      <app-child1></app-child1>
+      <!-- <app-child1></app-child1> -->
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

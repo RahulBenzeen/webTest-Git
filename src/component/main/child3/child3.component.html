@@ -1,0 +1,34 @@
+<h3>child3 works !</h3>
+
+<div style="display: inline-grid; width: 20%; margin-left: 20%">
+  <mat-form-field appearance="outline">
+    <input matInput type="text" [(ngModel)]="newDat.name" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" [(ngModel)]="newDat.age" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" [(ngModel)]="newDat.email" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" [(ngModel)]="newDat.address.street" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" [(ngModel)]="newDat.address.city" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" [(ngModel)]="newDat.address.state" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" [(ngModel)]="newDat.address.zip" />
+  </mat-form-field>
+  <button mat-raised-button (click)="applyAll()" style="margin-top: 4px">
+    Apply
+  </button>
+  <button mat-raised-button (click)="getAllvlues()" style="margin-top: 4px">
+    Get all Data
+  </button>
+  <button mat-raised-button (click)="resetAllData()" style="margin-top: 4px">
+    Reset
+  </button>
+</div>

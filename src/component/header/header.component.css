@@ -71,3 +71,9 @@ font-size: 25px;
 .content_style{
   margin-top: 6%;
 }
+
+.mat-drawer {
+
+  position: fixed;
+
+}

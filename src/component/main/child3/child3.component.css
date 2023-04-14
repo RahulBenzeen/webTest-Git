@@ -1,0 +1,29 @@
+.dropdown {
+    position: relative;
+  }
+  
+  .checkboxes {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+  }
+  
+  .list.show {
+    display: block;
+  }
+  
+  input[type="checkbox"]:checked + label + .list {
+    display: block;
+  }
+  

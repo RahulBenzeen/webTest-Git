@@ -1,0 +1,61 @@
+/* .mat_style{
+    margin-left: 30%;
+    width: 20%;
+}
+
+a{
+    display: flex;
+    border: 1px solid gray;
+    width: 14%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-evenly;
+}
+
+
+.mat-mdc-button>.mat-icon {
+
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    font-size: 1.125rem;
+    height: 1.125rem;
+    width: 1.125rem;
+} */
+
+
+.example-action-buttons {
+    padding-bottom: 20px;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+
+  .custom_style{
+    display: block;
+    width:20%;
+    margin-left: 5%;
+  }
+
+  .mat_style{
+    display:contents;
+  }
+
+
+ 
+
+  .apply_button{
+    
+        width: 20%;
+        margin-left: 5%;
+      
+        margin-top: 1%;
+  }

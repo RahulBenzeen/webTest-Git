@@ -1,0 +1,47 @@
+<section class="example-section" style="display: grid">
+
+  <mat-checkbox
+    class="example-margin"
+    >Inventory Id</mat-checkbox>
+  <span
+    class="example-list-section">
+    <ul style="display: grid; margin-top: -4px" >
+      <mat-checkbox [(ngModel)]="myCloneData[1].filterType.selectedFilters1.value" >Latest</mat-checkbox>
+      <mat-checkbox [(ngModel)]="myCloneData[1].filterType.selectedFilters2.value">Moderate</mat-checkbox>
+      <mat-checkbox [(ngModel)]="myCloneData[1].filterType.selectedFilters3.value">Old</mat-checkbox>
+  </ul>
+  </span>
+  <mat-checkbox
+    class="example-margin"
+    value="Model"
+    (ngModelChange)="changeDetection($event,'model')"
+    >Model
+  </mat-checkbox>
+  <span
+    class="example-list-section"
+    [style.display]="value2 == true ? '' : 'none'"
+  >
+    <ul style="display: grid; margin-top: -4px">
+      <mat-checkbox value="ragerove"  (ngModelChange)="modelSelcted($event,'model1')" >Range Rover</mat-checkbox>
+      <mat-checkbox value="bmws" (ngModelChange)="modelSelcted($event,'model2')" >BMW Series</mat-checkbox>
+      <mat-checkbox value="dodgeS" (ngModelChange)="modelSelcted($event,'model3')" >Dodge</mat-checkbox>
+    </ul>
+  </span>
+  <mat-checkbox
+    class="example-margin"
+    value="Make"
+    (ngModelChange)="changeDetection($event,'make')"
+    >Make
+  </mat-checkbox>
+  <span
+    class="example-list-section"
+    [style.display]="value3 == true ? '' : 'none'"
+  >
+    <ul style="display: grid; margin-top: -4px">
+      <mat-checkbox value="mercedes"  (ngModelChange)="makeSelected($event,'make1')">Mercedes</mat-checkbox>
+      <mat-checkbox value="bmw"  (ngModelChange)="makeSelected($event,'make2')">BMW</mat-checkbox>
+      <mat-checkbox value="maruti"  (ngModelChange)="makeSelected($event,'make3')">Maruti</mat-checkbox>
+    </ul>
+  </span>
+  <button mat-raised-button color="#00072e" (click)="appliedFilters()" class="apply_button">Apply</button>
+</section>
