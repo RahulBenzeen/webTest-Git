@@ -9,10 +9,13 @@ export class Child3Component {
 
 constructor(private globalServices:DataService){}
 
-
+val = ['none','no']
 
 ngOnInit(){
    console.log(this.globalServices.getGlobalObject())
+   console.log('this.globalServices.myFilterObjec')
+   console.log(this.globalServices.myFilterObject)
+   console.log(this.val.includes('none'))
 }
 
 myData = this.globalServices.myGlobalObject;
@@ -35,5 +38,7 @@ getAllvlues(){
 resetAllData(){
   this.globalServices.myGlobalObject=this.resetClone
 }
+
+
 
 }

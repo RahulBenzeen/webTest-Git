@@ -1,4 +1,5 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, EventEmitter, Injectable, Output,OnChanges , SimpleChanges, Input, ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/component/services.service';
 
 @Component({
@@ -6,156 +7,127 @@ import { DataService } from 'src/component/services.service';
   templateUrl: './filter1.component.html',
   styleUrls: ['./filter1.component.css'],
 })
+
 @Injectable({
   providedIn: 'root',
 })
+
+
+
 export class Filter1Component {
-  constructor(private filterService: DataService) {}
-
-filteObjectCopy = this.filterService.myFilterObject
-myCloneData =structuredClone(this.filteObjectCopy)
-
-value1: any;
-value2: any;
-value3: any;
-test1:any =true
-test2:any=false
-test3:any=false
-myCheckeflag:any
-
-  filterSchema: any = {
-    filterType: [],
-    selctedField: [],
-  };
-
-  ngOnInit(){
-    console.log('my ng oninit');
-    console.log('my clone data')
-    console.log(this.myCloneData)
-    // console.log(this.filteObjectCopy);
-    console.log(this.myCloneData[1].filterType.selectedFilters1.value);
-
-// for(let data of this.myCloneData){
-//      console.log('dataX');
-//      console.log(data.filterType);
-//      console.log(data.filterType);
-     
-// }
-    
+  constructor(private filterService: DataService, private cdr: ChangeDetectorRef) {
+    this.filterService.myFilterObject
+    console.log('i am log')
+    console.log( this.filterService.myFilterObject)
   }
 
-  checkedValue(event:any){
-    console.log('my compromised event ')
-    console.log(event.target.checked)
-    this.myCheckeflag= event.target.checked
+  @Output() appliedFilter = new EventEmitter<any>();
 
+
+  filteObjectReset:any 
+  myCloneData = this.filterService.myFilterObject;
+
+  // myCloneData = structuredClone(this.filteObjectCopy);
+
+ 
+  ngAfterViewInit() {
+    this.cdr.detectChanges();
   }
 
   appliedFilters() {
-  this.postDataOnApi();
+    this.appliedFilter.emit(this.myCloneData)
+    this.postDataOnApi();
   }
-  postDataOnApi() {
-    this.filterService.getFilterSchema(this.filterSchema).subscribe((data) => {
-      console.log(`my data ${data}`);
-    });
-    this.filterService.setData(this.filterSchema)
-  }
-  changeDetection(event: any, selctedmasterCheckbox: any) {
-    if (selctedmasterCheckbox === 'inventory') {
-      this.value1 = event.checked;
-      if (event.checked === true) {
-        this.filterSchema.filterType.push(event.source.value);
-      } else {
-        this.filterSchema.filterType.pop(event.source.value);
-      }
-    }
-    if (selctedmasterCheckbox === 'model') {
-      this.value2 = event.checked;
-      if (event.checked === true) {
-        this.filterSchema.filterType.push(event.source.value);
-      } else {
-        this.filterSchema.filterType.pop(event.source.value);
-      }
-    }
-    if (selctedmasterCheckbox === 'make') {
-      this.value3 = event.checked;
-      if (event.checked === true) {
-        this.filterSchema.filterType.push(event.source.value);
-      } else {
-        this.filterSchema.filterType.pop(event.source.value);
-      }
-    }
-  }
-  
-  inventorySelected(event: any, checkboxName: string) {
 
-    if (checkboxName === 'inventory1') {
-      
-      if (event.checked === true) {
-        this.filterSchema.selctedField.push(event.source.value);
-      } else {
-        this.filterSchema.selctedField.pop(event.source.value);
-      }
-    }
-    if (checkboxName === 'inventory2') {
-      if (event.checked === true) {
-        this.filterSchema.selctedField.push(event.source.value);
-      } else {
-        this.filterSchema.selctedField.pop(event.source.value);
-      }
-    }
-    if (checkboxName === 'inventory3') {
-      if (event.checked === true) {
-        this.filterSchema.selctedField.push(event.source.value);
-      } else {
-        this.filterSchema.selctedField.pop(event.source.value);
-      }
-    }
+  ngDoCheck(){
+    console.log('this is onChanges');
+    this.appliedFilter.emit(this.myCloneData)
+  
   }
-  modelSelcted(event: any, checkboxName: string) {
-    if (checkboxName === 'model1') {
-      if (event.checked === true) {
-        this.filterSchema.selctedField.push(event.source.value);
-      } else {
-        this.filterSchema.selctedField.pop(event.source.value);
-      }
-    }
-    if (checkboxName === 'model2') {
-      if (event.checked === true) {
-        this.filterSchema.selctedField.push(event.source.value);
-      } else {
-        this.filterSchema.selctedField.pop(event.source.value);
-      }
-    }
-    if (checkboxName === 'model3') {
-      if (event.checked === true) {
-        this.filterSchema.selctedField.push(event.source.value);
-      } else {
-        this.filterSchema.selctedField.pop(event.source.value);
-      }
-    }
+
+
+  postDataOnApi() {
+    this.filterService.updateMyFilters(this.myCloneData);
   }
-  makeSelected(event: any, checkboxName: string) {
-    if (checkboxName === 'make1') {
-      if (event.checked === true) {
-        this.filterSchema.selctedField.push(event.source.value);
-      } else {
-        this.filterSchema.selctedField.pop(event.source.value);
-      }
-    }
-    if (checkboxName === 'make2') {
-      if (event.checked === true) {
-        this.filterSchema.selctedField.push(event.source.value);
-      } else {
-        this.filterSchema.selctedField.pop(event.source.value);
-      }
-    }
-    if (checkboxName === 'make3') {
-      if (event.checked === true) {
-        this.filterSchema.selctedField.push(event.source.value);
-      } else {
-        this.filterSchema.selctedField.pop(event.source.value);
-      }
-    }
+  ngOnInit() {
+    console.log('my clone data 0.')
+
   }
+  // ngOnDestroy() {
+  //   this.dataSubscription.unsubscribe();
+  // }
+
+checkboxDisplayFlag1:any =false
+checkboxDisplayFlag2:any =false
+checkboxDisplayFlag3:any =false
+
+checkFilters(event:any,checkBoxHelper:any){
+     if(checkBoxHelper==='inventory'){
+         this.checkboxDisplayFlag1=event.checked
+     }
+    
+     if(checkBoxHelper==='model'){
+      this.checkboxDisplayFlag2=event.checked
+     }
+     if(checkBoxHelper==='make'){
+      this.checkboxDisplayFlag3=event.checked
+     }
+
+    
+  }
+
+  getobjectvalue(){
+    console.log(this.filterService.myFilterObject)
+  }
+checkBoxChangeDetection(event:any, checkBoxlabel:any){
+    
+//inventory
+     if(checkBoxlabel==='latest')
+       if(event.checked==true){
+         this.myCloneData[1].filterType.selectedFilters1.value = event.source.value
+       }
+     if(checkBoxlabel==='moderate')
+       if(event.checked==true){
+         this.myCloneData[1].filterType.selectedFilters2.value = event.source.value
+       }
+     if(checkBoxlabel==='old')
+       if(event.checked==true){
+         this.myCloneData[1].filterType.selectedFilters3.value = event.source.value
+       }
+
+//model
+
+     if(checkBoxlabel==='range')
+       if(event.checked==true){
+         this.myCloneData[2].filterType.selectedFilters1.value = event.source.value
+       }
+     if(checkBoxlabel==='bmws')
+       if(event.checked==true){
+         this.myCloneData[2].filterType.selectedFilters2.value = event.source.value
+       }
+     if(checkBoxlabel==='dodge')
+       if(event.checked==true){
+         this.myCloneData[2].filterType.selectedFilters3.value = event.source.value
+       }
+//make
+
+     if(checkBoxlabel==='mercedes')
+       if(event.checked==true){
+         this.myCloneData[3].filterType.selectedFilters1.value = event.source.value
+       }
+     if(checkBoxlabel==='bmw')
+       if(event.checked==true){
+         this.myCloneData[3].filterType.selectedFilters2.value = event.source.value
+       }
+     if(checkBoxlabel==='maruti')
+       if(event.checked==true){
+         this.myCloneData[3].filterType.selectedFilters3.value = event.source.value
+       }
+  }
+
+
+
+
+
+
 }

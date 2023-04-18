@@ -20,7 +20,7 @@ obj:any = []
 
   ngOnInit(){
     console.log('m console log data from services')
-   console.log(this.globalService.myGlobalObject)
+   console.log(this.globalService.myFilterObject)
   }
 
 }

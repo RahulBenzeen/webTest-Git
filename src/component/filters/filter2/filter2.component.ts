@@ -17,5 +17,8 @@ export class Filter2Component {
         console.log('my data from observable');
         console.log(this.data);
       })
+ 
   }
+
+
 }
