@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -128,7 +130,7 @@ export class DataService {
 
 
   resetMyAppliedFilters() {
-    // this.myFilterObject[1].filterType.selectedFilters1.value=''
+   console.log('i am reset ')
     this.myFilterObject = [
       {
         filterlabel: 'Personal Data'
@@ -193,6 +195,7 @@ export class DataService {
         }
       },
     ]
+console.log(this.myFilterObject)
   }
 
   updateMyFilters(req: any) {
@@ -200,63 +203,7 @@ export class DataService {
     console.log('my req body');
     console.log(req);
 
-    this.myFilterObject = [
-      {
-        filterlabel: 'Personal Data'
-      },
-      {
-        filterType: {
-          name: 'Inventory Id',
-          selectedFilters1: {
-            name: 'Latest',
-            value: req[1].filterType.selectedFilters1.value
-          },
-          selectedFilters2: {
-            name: 'Moderate',
-            value: req[1].filterType.selectedFilters2.value
-          },
-          selectedFilters3: {
-            name: 'Old',
-            value: req[1].filterType.selectedFilters3.value
-          }
-        }
-      },
-      {
-        filterType: {
-          name: 'Model',
-          selectedFilters1: {
-            name: 'Range Rover',
-            value: req[2].filterType.selectedFilters1.value
-          },
-          selectedFilters2: {
-            name: 'Bmw series',
-            value: req[2].filterType.selectedFilters2.value
-          },
-          selectedFilters3: {
-            name: 'dodge',
-            value: req[2].filterType.selectedFilters3.value
-          }
-        }
-      }, {
-        filterType: {
-          name: 'make',
-          selectedFilters1: {
-            name: 'mercedes',
-            value: req[3].filterType.selectedFilters1.value
-          },
-          selectedFilters2: {
-            name: 'bmw',
-            value: req[3].filterType.selectedFilters2.value
-          },
-          selectedFilters3: {
-            name: 'maruti',
-            value: req[3].filterType.selectedFilters3.value
-          }
-        }
-      },
-    ];
-
-
+    this.myFilterObject = req
 
   }
 

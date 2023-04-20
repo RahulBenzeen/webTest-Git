@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Filter1Component } from 'src/component/filters/filter1/filter1.component';
 import { DataService } from 'src/component/services.service';
 
@@ -9,6 +9,9 @@ import { DataService } from 'src/component/services.service';
   providers: [Filter1Component],
 })
 export class Child2Component {
+
+@ViewChild(Filter1Component) filter1!:Filter1Component
+
   constructor(
     private ObjectService: DataService
   ) {}
@@ -32,8 +35,8 @@ export class Child2Component {
   resetAllFilters() {
     console.log('reset')
     this.ObjectService.resetMyAppliedFilters();
-    console.log('reset')
-    console.log(this.ObjectService.myFilterObject)
+    this.filter1.myDupliCateFunction()
+
   }
 
 }

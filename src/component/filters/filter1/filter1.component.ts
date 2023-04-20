@@ -15,7 +15,7 @@ import { DataService } from 'src/component/services.service';
 
 
 export class Filter1Component {
-  constructor(private filterService: DataService, private cdr: ChangeDetectorRef) {
+  constructor(private filterService: DataService,) {
     this.filterService.myFilterObject
     console.log('i am log')
     console.log( this.filterService.myFilterObject)
@@ -24,15 +24,12 @@ export class Filter1Component {
   @Output() appliedFilter = new EventEmitter<any>();
 
 
-  filteObjectReset:any 
-  myCloneData = this.filterService.myFilterObject;
+
+  myCloneData:any 
 
   // myCloneData = structuredClone(this.filteObjectCopy);
 
- 
-  ngAfterViewInit() {
-    this.cdr.detectChanges();
-  }
+
 
   appliedFilters() {
     this.appliedFilter.emit(this.myCloneData)
@@ -51,11 +48,9 @@ export class Filter1Component {
   }
   ngOnInit() {
     console.log('my clone data 0.')
-
+     this.myCloneData = [ ...this.filterService.myFilterObject];
   }
-  // ngOnDestroy() {
-  //   this.dataSubscription.unsubscribe();
-  // }
+
 
 checkboxDisplayFlag1:any =false
 checkboxDisplayFlag2:any =false
@@ -73,12 +68,10 @@ checkFilters(event:any,checkBoxHelper:any){
       this.checkboxDisplayFlag3=event.checked
      }
 
-    
   }
 
-  getobjectvalue(){
-    console.log(this.filterService.myFilterObject)
-  }
+
+  
 checkBoxChangeDetection(event:any, checkBoxlabel:any){
     
 //inventory
@@ -125,9 +118,14 @@ checkBoxChangeDetection(event:any, checkBoxlabel:any){
        }
   }
 
+  myDupliCateFunction(){
 
-
-
-
+    this.checkboxDisplayFlag1 =false
+    this.checkboxDisplayFlag2 =false
+    this.checkboxDisplayFlag3 =false
+    this.filterService.resetMyAppliedFilters()
+    this.myCloneData=this.filterService.myFilterObject
+  
+}
 
 }

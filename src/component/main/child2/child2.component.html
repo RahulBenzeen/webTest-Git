@@ -1,25 +1,45 @@
 <p>child2 works!</p>
 
-<div class="filter_style" >
-<mat-accordion class="example-headers-align custom_style" multi style="padding-top: 20px;">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title> Personal data </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-divider ></mat-divider>
-    <app-filter1 (appliedFilter)="onAppliedFilterChanged($event)"></app-filter1>
-   
-   
-  </mat-expansion-panel>
-</mat-accordion>
-<mat-accordion class="example-headers-align custom_style" multi style="padding-top: 20px;">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title> Part#</mat-panel-title>
-    </mat-expansion-panel-header>
-    <app-filter2></app-filter2>
-  </mat-expansion-panel>
-</mat-accordion>
-<button mat-raised-button style="margin-left: 5%; margin-top: 1%;"(click)="applyAllFilters()">Apply Filters</button>
-<button mat-raised-button style="margin-left: 6.8%; margin-top: 1%;"(click)="resetAllFilters()">Reset Filters</button>
+<div class="filter_style">
+  <mat-accordion
+    class="example-headers-align custom_style"
+    multi
+    style="padding-top: 20px"
+  >
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Personal data </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-divider></mat-divider>
+      <app-filter1
+        (appliedFilter)="onAppliedFilterChanged($event)"
+      ></app-filter1>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion
+    class="example-headers-align custom_style"
+    multi
+    style="padding-top: 20px"
+  >
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Part#</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-filter2></app-filter2>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <button
+    mat-raised-button
+    style="margin-left: 5%; margin-top: 1%"
+    (click)="applyAllFilters()"
+  >
+    Apply Filters
+  </button>
+  <button
+    mat-raised-button
+    style="margin-left: 6.8%; margin-top: 1%"
+    (click)="resetAllFilters()"
+  >
+    Reset Filters
+  </button>
 </div>
