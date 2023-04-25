@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
-import { ProfileModule } from './profile/profile.module';
-import { HttpClientModule } from '@angular/common/http';
+import { ProfileModule } from './profile/profile.module';;
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+
 
 const routes: Routes = [
   {
@@ -28,7 +28,7 @@ const config: ExtraOptions = {
     ReactiveFormsModule,
     RouterModule.forRoot(routes, config),
     ProfileModule,
-    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
