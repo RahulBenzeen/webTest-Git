@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+
 import { ProfileComponent } from './profile.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -35,9 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
     ExperienceComponent,
     SkillsComponent,
   ],
-  providers: [
-    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService,
-  ]
+  // providers: [
+  //   { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+  //   SnotifyService,
+  // ]
 })
 export class ProfileModule { }
