@@ -18,7 +18,6 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     FormsModule,
-
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
@@ -35,9 +34,5 @@ import { HttpClientModule } from '@angular/common/http';
     ExperienceComponent,
     SkillsComponent,
   ],
-  // providers: [
-  //   { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-  //   SnotifyService,
-  // ]
 })
 export class ProfileModule { }
